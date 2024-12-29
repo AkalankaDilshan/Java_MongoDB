@@ -32,13 +32,13 @@ public class StudentController {
         return new ResponseEntity(resp, HttpStatus.OK);
     }
 
-    @PutMapping("/update/{id}")
+    @PostMapping("/update/{id}")
     public ResponseEntity updateStudent(@PathVariable String id, @RequestBody Student updatedStudent) throws Exception {
         CommonResponse resp = new CommonResponse("success", "Record Updated!", service.updateStudent(id, updatedStudent));
         return new ResponseEntity<>(resp, HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @PostMapping("/delete/{id}")
     public ResponseEntity deleteStudent(@PathVariable String id) throws Exception {
         CommonResponse resp = new CommonResponse("success", service.deleteStudent(id), null);
         return new ResponseEntity<>(resp, HttpStatus.OK);
