@@ -24,6 +24,23 @@ public class StudnetService {
         return Repo.findById(id).orElseThrow(() -> new Exception("Student not found with ID: " + id));
     }
 
+    public Student updateStudent(String id, Student updatedStudent) throws Exception {
+        Student existingStudent = Repo.findById(id)
+                .orElseThrow(() -> new Exception("Student not found with ID: " + id));
 
+        // Update fields
+        existingStudent.setName(updatedStudent.getName());
+        existingStudent.setEmail(updatedStudent.getEmail());
+
+        return Repo.save(existingStudent);
+    }
+
+    public String deleteStudent(String id) throws Exception {
+        Student existingStudent = Repo.findById(id)
+                .orElseThrow(() -> new Exception("Student not found with ID: " + id));
+
+        Repo.delete(existingStudent);
+        return "Student with ID: " + id + " has been deleted successfully.";
+    }
 
 }
