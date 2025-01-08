@@ -15,7 +15,7 @@ public class CorsConfig {
         CorsConfiguration config = new CorsConfiguration();
 
         config.setAllowCredentials(true); // Allow cookies and authentication
-        config.addAllowedOrigin("http://16.171.34.178:3000"); // Allow all origins
+        config.addAllowedOrigin("*"); // Allow all origins
         config.addAllowedHeader("*"); // Allow all headers
         config.addAllowedMethod("*"); // Allow all HTTP methods (GET, POST, PUT, DELETE, etc.)
 
