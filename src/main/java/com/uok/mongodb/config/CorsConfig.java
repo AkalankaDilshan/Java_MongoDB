@@ -9,15 +9,12 @@ import org.springframework.web.filter.CorsFilter;
 
 @Configuration
 public class CorsConfig {
-    @Value("${frontend.url}")
-    private String frontendUrl;
     @Bean
     public CorsFilter corsFilter() {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true); // Allow cookies and authentication
-        config.addAllowedOrigin(frontendUrl); // Allow your frontend's origin
-//        config.addAllowedOriginPattern(${FRONTEND_URL});
+        config.addAllowedOriginPattern("*");
         config.addAllowedHeader("*"); // Allow all headers
         config.addAllowedMethod("*"); // Allow all HTTP methods (GET, POST, PUT, DELETE, etc.)
         source.registerCorsConfiguration("/**", config);
